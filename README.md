@@ -1,1 +1,3 @@
-## Playing with Rust
+# Playing with Rust
+
+The project structure is awful!
