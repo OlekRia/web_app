@@ -1,6 +1,6 @@
 use super::super::enums::TaskStatus;
 use super::base::Base;
-use crate::to_do::traits::{delete::Delete, edit::Edit, get::Get};
+use crate::to_do::traits::{create::Create, edit::Edit, get::Get};
 
 pub struct Pending {
     pub super_struct: Base,
@@ -18,5 +18,5 @@ impl Pending {
 }
 
 impl Get for Pending {}
-impl Delete for Pending {}
 impl Edit for Pending {}
+impl Create for Pending {}

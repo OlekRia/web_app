@@ -1,8 +1,9 @@
 use enums::TaskStatus;
 use structs::{done::Done, pending::Pending};
 
+pub mod data;
 pub mod enums;
-mod structs;
+pub mod structs;
 pub mod traits;
 
 pub enum ItemTypes {
