@@ -1,29 +1,23 @@
-mod processes;
-mod state;
-mod to_do;
+mod cli;
 
-use processes::process_input;
-use state::read_file;
-use std::env;
-use to_do::{data::FILE_NAME, enums::TaskStatus, to_do_factory};
+use actix_web::{web, App, HttpRequest, HttpServer, Responder};
+use tokio;
 
-fn grab_args() -> (String, String) {
-    let args: Vec<String> = env::args().collect();
-    let command: &String = &args[1];
-    let title: &String = &args[2];
-
-    (command.to_string(), title.to_string())
+async fn greet(req: HttpRequest) -> impl Responder {
+    let name = req.match_info().get("name").unwrap_or("World");
+    format!("Hello {}!", name)
 }
 
-fn main() {
-    let (command, title) = grab_args();
-    let state = read_file(FILE_NAME);
-
-    let status: String = match state.get(&title) {
-        Some(result) => result.to_string().replace("\"", ""),
-        None => "pending".to_owned(),
-    };
-
-    let item = to_do_factory(&title, TaskStatus::from_string(status.to_uppercase()));
-    process_input(item, command, &state);
+#[tokio::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new()
+            .route("/", web::get().to(greet))
+            .route("/name", web::get().to(greet))
+    })
+    .bind("127.0.0.1:8080")?
+    .bind("127.0.0.1:8081")?
+    .workers(3)
+    .run()
+    .await
 }
