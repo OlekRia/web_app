@@ -1,4 +1,5 @@
 mod cli;
+mod views;
 
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 use tokio;
@@ -12,6 +13,7 @@ async fn greet(req: HttpRequest) -> impl Responder {
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()
+            .configure(views::view_factory)
             .route("/", web::get().to(greet))
             .route("/name", web::get().to(greet))
     })
