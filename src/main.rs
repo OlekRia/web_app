@@ -2,6 +2,7 @@ use actix_web::{web, App, HttpRequest, HttpServer, Responder};
 use tokio;
 
 mod cli;
+mod json_serialization;
 mod processes;
 mod state;
 mod to_do;

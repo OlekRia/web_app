@@ -1,6 +1,7 @@
 {
-  "cSpell.words": ["rngs"],
+  "cSpell.words": ["Dposition", "rngs"],
   "rust-analyzer.linkedProjects": [
+    "./Cargo.toml",
     "./Cargo.toml",
     "./Cargo.toml",
     "./Cargo.toml",
