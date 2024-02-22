@@ -1,5 +1,5 @@
 use actix_web::{web, App, HttpRequest, HttpServer, Responder};
-use tokio;
+use tokio::{self, main};
 
 mod cli;
 mod json_serialization;
@@ -13,7 +13,7 @@ async fn greet(req: HttpRequest) -> impl Responder {
     format!("Hello {}!", name)
 }
 
-#[tokio::main]
+#[main]
 async fn main() -> std::io::Result<()> {
     HttpServer::new(|| {
         App::new()

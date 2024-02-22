@@ -2,15 +2,15 @@ use core::fmt::Debug;
 
 #[derive(Debug)]
 struct TwoDposition {
-    x: i32,
-    y: i32,
+    _x: i32,
+    _y: i32,
 }
 
 #[derive(Debug)]
 struct ThreeDposition {
-    x: i32,
-    y: i32,
-    z: i32,
+    _x: i32,
+    _y: i32,
+    _z: i32,
 }
 
 fn print_debug<S>(s: &S)
@@ -20,7 +20,7 @@ where
     println!("{:?}", s);
 }
 
-fn debug_iter<I>(iter: I)
+fn _debug_iter<I>(iter: I)
 where
     I: Iterator,
     I::Item: Debug,
@@ -31,8 +31,12 @@ where
 }
 
 fn main() {
-    let two = TwoDposition { x: 1, y: 2 };
-    let three = ThreeDposition { x: 1, y: 2, z: 3 };
+    let two = TwoDposition { _x: 1, _y: 2 };
+    let three = ThreeDposition {
+        _x: 1,
+        _y: 2,
+        _z: 3,
+    };
     print_debug(&two);
     print_debug(&three);
 }
