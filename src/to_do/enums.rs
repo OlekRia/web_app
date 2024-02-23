@@ -27,7 +27,6 @@ impl fmt::Display for TaskStatus {
 
 impl TaskStatus {
     pub fn from_string(input_string: String) -> Self {
-        println!("{}", input_string);
         match input_string.as_str() {
             "DONE" => TaskStatus::DONE,
             "PENDING" => TaskStatus::PENDING,
