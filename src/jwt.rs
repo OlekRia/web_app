@@ -1,4 +1,4 @@
-use actix_web::{dev::Payload, Error, FromRequest, HttpRequest};
+use actix_web::{Error, FromRequest};
 use futures::future::{ok, Ready};
 
 pub struct JwtToken {
